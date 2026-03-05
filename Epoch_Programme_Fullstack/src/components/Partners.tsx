@@ -29,7 +29,10 @@ export default function Partners() {
                     {/* AI Grants India */}
                     <div className="partner-card" style={{ transitionDelay: '0.2s' }}>
                         <div className="partner-logo aig-logo">
-                            <img src="https://oslhhlifshwcjrogbtbh.supabase.co/storage/v1/object/public/logos/India_AI_Grants_Logo_Cropped.png" alt="AI Grants India Logo" style={{ maxHeight: '100%', maxWidth: '100%' }} />
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                <img src="https://oslhhlifshwcjrogbtbh.supabase.co/storage/v1/object/public/logos/Pure_Flag.png" alt="India Flag" style={{ height: '40px', width: 'auto' }} />
+                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.4rem', fontWeight: 'bold', color: '#ffffff' }}>AI GRANTS INDIA</span>
+                            </div>
                         </div>
                         <div className="partner-role">CO-ORGANISER & INFRA PROVIDER</div>
                         <p>Deploying heavy compute resources. Unleashing Anthropic, Google, and OpenAI bandwidth for zero-friction AI development.</p>
