@@ -427,7 +427,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 
 /* ─── PARTNERS ────────────────────────────────────────────────────────────── */
 .partners-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 }
 .partner-card {
@@ -448,6 +448,16 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
     text-transform: uppercase; color: var(--gold);
     margin-bottom: 16px;
 }
+.partner-logo-img {
+    height: 48px; display: flex; align-items: center;
+    margin-bottom: 16px;
+}
+.partner-logo-img img {
+    max-height: 48px; max-width: 160px; object-fit: contain;
+    filter: brightness(0) invert(1); opacity: 0.85;
+    transition: opacity var(--transition);
+}
+.partner-card:hover .partner-logo-img img { opacity: 1; }
 .partner-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; }
 
 /* ─── APPLY ───────────────────────────────────────────────────────────────── */
@@ -516,7 +526,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
     .paths { grid-template-columns: 1fr 1fr; }
     .groups { grid-template-columns: 1fr; }
     .pune-grid { grid-template-columns: 1fr 1fr; }
-    .partners-grid { grid-template-columns: 1fr; }
+    .partners-grid { grid-template-columns: 1fr 1fr; }
     .apply-details { grid-template-columns: 1fr; }
     .footer-content { flex-direction: column; gap: 20px; text-align: center; }
     .footer-info { text-align: center; }
