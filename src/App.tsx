@@ -8,6 +8,7 @@ import Partners from './components/Partners';
 import FAQ from './components/FAQ';
 import ApplyForm from './components/ApplyForm';
 import AdminDashboard from './components/AdminDashboard';
+import EditApplication from './components/EditApplication';
 import './admin.css';
 
 function LandingPage() {
@@ -93,6 +94,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/apply" element={<ApplyForm />} />
+        <Route path="/apply/edit" element={<EditApplication />} />
         <Route path="/admin/epoch-mavericks-2026" element={<AdminDashboard />} />
       </Routes>
 

@@ -99,6 +99,9 @@ export default function ApplyForm() {
                         <p style={{ color: 'var(--text-dim)', marginBottom: '2rem', fontSize: '0.9rem' }}>
                             We'll reach out via WhatsApp or email within 48 hours if you make the cut.
                         </p>
+                        <p style={{ color: 'var(--text-dim)', marginBottom: '2rem', fontSize: '0.85rem' }}>
+                            Want to update your answers? You can <Link to="/apply/edit" style={{ color: 'var(--green)', textDecoration: 'underline' }}>edit your application</Link> anytime before the deadline.
+                        </p>
                         <Link to="/" className="btn-secondary">RETURN TO ROOT</Link>
                     </div>
                 </div>
