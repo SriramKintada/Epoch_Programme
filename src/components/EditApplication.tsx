@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function EditApplication() {
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
     const [found, setFound] = useState(false);
@@ -55,6 +56,15 @@ export default function EditApplication() {
 
             if (fetchError || !data) {
                 setError('No application found with this email. Check the address and try again.');
+                setLoading(false);
+                return;
+            }
+
+            // Verify phone matches (strip spaces/dashes for comparison)
+            const cleanInput = phone.replace(/[\s\-()]/g, '');
+            const cleanStored = (data.phone || '').replace(/[\s\-()]/g, '');
+            if (cleanInput !== cleanStored) {
+                setError('Phone number does not match. Enter the same phone you applied with.');
                 setLoading(false);
                 return;
             }
@@ -180,7 +190,7 @@ export default function EditApplication() {
                         <div className="sys-message">
                             <p className="prompt">&gt; EDIT PROTOCOL // ACTIVATED</p>
                             <p style={{ color: 'var(--text-main)', fontWeight: 'bold' }}>Already applied? Update your application here.</p>
-                            <p>Enter the email you used when you applied. You can edit your responses anytime before the deadline.</p>
+                            <p>Enter the email and phone number you used when you applied. You can edit your responses anytime before the deadline.</p>
                         </div>
 
                         {error && (
@@ -200,10 +210,21 @@ export default function EditApplication() {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
+                            <div className="form-group">
+                                <label>PHONE / WHATSAPP *</label>
+                                <input
+                                    type="tel"
+                                    required
+                                    placeholder="The phone number you applied with"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                />
+                                <span className="form-hint">Must match exactly what you entered in your application</span>
+                            </div>
                             <div className="submit-section">
                                 <button type="submit" className="btn-primary huge-btn" disabled={loading}>
                                     <div className="btn-edge-left"></div>
-                                    {loading ? 'SEARCHING...' : 'FIND MY APPLICATION'}
+                                    {loading ? 'VERIFYING...' : 'FIND MY APPLICATION'}
                                     <div className="btn-edge-right"></div>
                                 </button>
                             </div>
