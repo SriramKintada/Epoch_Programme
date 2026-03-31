@@ -73,7 +73,11 @@ export default function ApplyForm() {
             .insert([payload]);
 
         if (insertError) {
-            setError(insertError.message);
+            if (insertError.message.includes('duplicate') || insertError.message.includes('unique') || insertError.code === '23505') {
+                setError('You\'ve already applied with this email! To update your application, visit /apply/edit');
+            } else {
+                setError(insertError.message);
+            }
             setLoading(false);
             return;
         }
