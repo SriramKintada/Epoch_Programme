@@ -73,11 +73,7 @@ export default function ApplyForm() {
             .insert([payload]);
 
         if (insertError) {
-            if (insertError.message.includes('duplicate') || insertError.message.includes('unique') || insertError.code === '23505') {
-                setError('You\'ve already applied with this email! To update your application, visit /apply/edit');
-            } else {
-                setError(insertError.message);
-            }
+            setError(insertError.message);
             setLoading(false);
             return;
         }
@@ -102,9 +98,6 @@ export default function ApplyForm() {
                         </p>
                         <p style={{ color: 'var(--text-dim)', marginBottom: '2rem', fontSize: '0.9rem' }}>
                             We'll reach out via WhatsApp or email within 48 hours if you make the cut.
-                        </p>
-                        <p style={{ color: 'var(--text-dim)', marginBottom: '2rem', fontSize: '0.85rem' }}>
-                            Want to update your answers? You can <Link to="/apply/edit" style={{ color: 'var(--green)', textDecoration: 'underline' }}>edit your application</Link> anytime before the deadline.
                         </p>
                         <Link to="/" className="btn-secondary">RETURN TO ROOT</Link>
                     </div>
