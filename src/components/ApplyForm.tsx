@@ -96,8 +96,11 @@ export default function ApplyForm() {
                         <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>
                             Your application is being evaluated. Early applicants get priority — you're already ahead.
                         </p>
-                        <p style={{ color: 'var(--text-dim)', marginBottom: '2rem', fontSize: '0.9rem' }}>
+                        <p style={{ color: 'var(--text-dim)', marginBottom: '1rem', fontSize: '0.9rem' }}>
                             We'll reach out via WhatsApp or email within 48 hours if you make the cut.
+                        </p>
+                        <p style={{ color: 'var(--text-dim)', marginBottom: '2rem', fontSize: '0.85rem' }}>
+                            Changed your mind about something? You can submit a fresh application anytime before the deadline. We'll review your latest submission.
                         </p>
                         <Link to="/" className="btn-secondary">RETURN TO ROOT</Link>
                     </div>
@@ -122,7 +125,7 @@ export default function ApplyForm() {
                         <div className="deadline-icon">⚡</div>
                         <div>
                             <p className="deadline-main">Applications close <strong>Thursday, April 2nd at 6:00 PM IST.</strong></p>
-                            <p className="deadline-sub">Early applicants get priority review. The earlier you apply, the higher your chances.</p>
+                            <p className="deadline-sub">Early applicants get priority review. The earlier you apply, the higher your chances. You can always resubmit a fresh application later if anything changes.</p>
                         </div>
                     </div>
 
