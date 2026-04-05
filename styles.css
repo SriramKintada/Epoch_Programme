@@ -62,6 +62,91 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 .body-text-lg { color: var(--text-muted); font-size: 1.15rem; max-width: 760px; margin: 0 auto 40px; line-height: 1.8; }
 .gold { color: var(--gold-light); }
 
+.interview-note {
+    max-width: 900px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.accordion-list {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
+}
+
+.accordion-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.accordion-item:hover {
+    border-color: rgba(201,168,76,0.26);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+}
+
+.accordion-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.accordion-item summary::-webkit-details-marker { display: none; }
+
+.accordion-item[open] .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-icon {
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    transition: transform var(--transition);
+    line-height: 1;
+}
+
+.accordion-content {
+    padding: 0 26px 24px;
+    border-top: 1px solid var(--card-border);
+}
+
+.chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 18px;
+}
+
+.chip {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold-light);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.question-list {
+    margin: 18px 0 0 18px;
+    color: var(--text-muted);
+}
+
+.question-list li {
+    margin-bottom: 12px;
+    padding-left: 4px;
+}
+
 /* ─── LAYOUT ──────────────────────────────────────────────────────────────── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section { padding: 100px 0; }

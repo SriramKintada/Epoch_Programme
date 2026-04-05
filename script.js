@@ -46,6 +46,7 @@ staggerChildren('.partner-card', 100);
 staggerChildren('.path-card', 60);
 staggerChildren('.group-card', 80);
 staggerChildren('.apply-detail', 60);
+staggerChildren('.accordion-item', 70);
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
