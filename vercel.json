@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/cohort2-founder-exit-assessment-c2f89b", "destination": "/cohort2-founder-exit-assessment-c2f89b.html" },
+    { "source": "/c2-exit-eval-984e72", "destination": "/cohort2-founder-exit-assessment-c2f89b.html" }
+  ]
+}

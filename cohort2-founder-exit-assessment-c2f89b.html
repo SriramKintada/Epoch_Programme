@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPOCH Cohort 2 · Founder Exit Feedback & Assessment</title>
+    <meta name="description" content="Founder Feedback & Accelerator Program Assessment for EPOCH Cohort 2 deep-tech entrepreneurs.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Global & Page Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="feedback.css">
+
+    <!-- Supabase JS Client v2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="feedback-page">
+
+    <!-- Ambient Visual Backgrounds -->
+    <div class="feedback-ambient-bg"></div>
+    <div class="feedback-grid-pattern"></div>
+
+    <!-- Navigation Header -->
+    <nav class="nav scrolled" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" style="color: inherit; text-decoration: none;">EPOCH</a>
+            </div>
+            <div class="nav-links">
+                <a href="/">← Return to Main Page</a>
+                <a href="https://epoch.aigrants.in" target="_blank" rel="noopener noreferrer">AIGrants Platform ↗</a>
+                <span class="feedback-badge" style="margin: 0; padding: 4px 12px; font-size: 0.7rem;">Cohort 2 Exit Assessment</span>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="/">← Return to Main Page</a>
+            <a href="https://epoch.aigrants.in" target="_blank" rel="noopener noreferrer">AIGrants Platform ↗</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="feedback-container">
+
+        <!-- Page Header -->
+        <header class="feedback-header">
+            <div class="feedback-badge">
+                <span class="feedback-badge-dot"></span>
+                Official Exit Assessment & Program Review
+            </div>
+            <h1 class="feedback-title">EPOCH COHORT 2</h1>
+            <p class="feedback-subtitle">Founder Feedback & Accelerator Program Assessment</p>
+
+            <!-- Introduction Note Card -->
+            <div class="feedback-intro-card">
+                <div class="feedback-intro-icon">✦</div>
+                <p class="feedback-intro-text">
+                    Thank you for being an integral founder of <strong>EPOCH Cohort 2</strong>. Your candid feedback directly shapes our ongoing curriculum, mentor allocation matrices, regulatory playbooks, and investor syndication network for deep-tech entrepreneurs.
+                </p>
+            </div>
+        </header>
+
+        <!-- Sticky Live Progress Tracker -->
+        <div class="progress-bar-wrapper" id="progressBarWrapper">
+            <div class="progress-header">
+                <span>Completion Status</span>
+                <span class="progress-counter" id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Validation & Error Banner -->
+        <div class="form-error-banner" id="formErrorBanner" role="alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span id="formErrorMessage">Please fill out all required fields marked in red.</span>
+        </div>
+
+        <!-- Interactive Feedback Form -->
+        <form id="cohortFeedbackForm" novalidate>
+
+            <!-- ========================================================= -->
+            <!-- SECTION 1: FOUNDER & STARTUP INFORMATION -->
+            <!-- ========================================================= -->
+            <section class="form-section-card active-section" id="section1Card">
+                <div class="section-card-header">
+                    <div class="section-number-pill">1</div>
+                    <div class="section-card-title-group">
+                        <h2 class="section-card-title">Founder & Startup Information</h2>
+                        <p class="section-card-desc">Identify your venture and founder contact profile.</p>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="founder_name">Founder Full Name <span class="label-required">*</span></label>
+                        <input type="text" id="founder_name" name="founder_name" class="form-input" placeholder="e.g., Jane Doe" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="startup_name">Startup Name <span class="label-required">*</span></label>
+                        <input type="text" id="startup_name" name="startup_name" class="form-input" placeholder="e.g., Nova Robotics AI" required autocomplete="organization">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="role_title">Role / Title</label>
+                        <input type="text" id="role_title" name="role_title" class="form-input" placeholder="e.g., Co-Founder & CEO / Chief Scientist" autocomplete="organization-title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address <span class="label-required">*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="jane@novarobotics.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number <span class="label-hint">(Optional — for WhatsApp / direct follow-up)</span></label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210" autocomplete="tel">
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SECTION 2: PROGRAM MODULE & CONTENT RATINGS -->
+            <!-- ========================================================= -->
+            <section class="form-section-card" id="section2Card">
+                <div class="section-card-header">
+                    <div class="section-number-pill">2</div>
+                    <div class="section-card-title-group">
+                        <h2 class="section-card-title">Program Module & Content Ratings</h2>
+                        <p class="section-card-desc">Evaluate the depth, actionability, and execution rigor of each acceleration pillar on a scale from 1 (Poor) to 5 (Excellent).</p>
+                    </div>
+                </div>
+
+                <!-- Scale Legend -->
+                <div class="rating-scale-legend">
+                    <div class="legend-item"><span class="legend-badge">1</span> Poor</div>
+                    <div class="legend-item"><span class="legend-badge">2</span> Fair</div>
+                    <div class="legend-item"><span class="legend-badge">3</span> Good</div>
+                    <div class="legend-item"><span class="legend-badge">4</span> Very Good</div>
+                    <div class="legend-item"><span class="legend-badge">5</span> Excellent</div>
+                </div>
+
+                <!-- Desktop Matrix Table -->
+                <div class="matrix-table-container">
+                    <table class="matrix-table" aria-label="Program Module Ratings Matrix">
+                        <thead>
+                            <tr>
+                                <th class="col-area">Core Acceleration Area</th>
+                                <th>1<br><span style="font-size:0.68rem; font-weight:400; color:var(--text-dim);">Poor</span></th>
+                                <th>2<br><span style="font-size:0.68rem; font-weight:400; color:var(--text-dim);">Fair</span></th>
+                                <th>3<br><span style="font-size:0.68rem; font-weight:400; color:var(--text-dim);">Good</span></th>
+                                <th>4<br><span style="font-size:0.68rem; font-weight:400; color:var(--text-dim);">Very Good</span></th>
+                                <th>5<br><span style="font-size:0.68rem; font-weight:400; color:var(--text-dim);">Excellent</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 1. Legal First -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">01</span>
+                                    Legal, IP Advisory &amp; Regulatory Compliance Frameworks
+                                </td>
+                                <td><input type="radio" id="d_lip_1" name="rating_legal_ip" value="1" class="matrix-radio-input"><label for="d_lip_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_lip_2" name="rating_legal_ip" value="2" class="matrix-radio-input"><label for="d_lip_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_lip_3" name="rating_legal_ip" value="3" class="matrix-radio-input"><label for="d_lip_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_lip_4" name="rating_legal_ip" value="4" class="matrix-radio-input"><label for="d_lip_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_lip_5" name="rating_legal_ip" value="5" class="matrix-radio-input"><label for="d_lip_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+
+                            <!-- 2. Product Validation Second -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">02</span>
+                                    Product Validation, Tech Transfer &amp; Scale-Up Guidance
+                                </td>
+                                <td><input type="radio" id="d_pv_1" name="rating_product_validation" value="1" class="matrix-radio-input"><label for="d_pv_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pv_2" name="rating_product_validation" value="2" class="matrix-radio-input"><label for="d_pv_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pv_3" name="rating_product_validation" value="3" class="matrix-radio-input"><label for="d_pv_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pv_4" name="rating_product_validation" value="4" class="matrix-radio-input"><label for="d_pv_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pv_5" name="rating_product_validation" value="5" class="matrix-radio-input"><label for="d_pv_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+
+                            <!-- 3. Product Market Fit Third -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">03</span>
+                                    Product-Market Fit &amp; Deep-Tech Strategy
+                                </td>
+                                <td><input type="radio" id="d_pmf_1" name="rating_product_market_fit" value="1" class="matrix-radio-input"><label for="d_pmf_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pmf_2" name="rating_product_market_fit" value="2" class="matrix-radio-input"><label for="d_pmf_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pmf_3" name="rating_product_market_fit" value="3" class="matrix-radio-input"><label for="d_pmf_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pmf_4" name="rating_product_market_fit" value="4" class="matrix-radio-input"><label for="d_pmf_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pmf_5" name="rating_product_market_fit" value="5" class="matrix-radio-input"><label for="d_pmf_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+
+                            <!-- 4. Go To Market Strategy -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">04</span>
+                                    Go-to-Market Strategy &amp; Execution
+                                </td>
+                                <td><input type="radio" id="d_gtm_1" name="rating_gtm_strategy" value="1" class="matrix-radio-input"><label for="d_gtm_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_gtm_2" name="rating_gtm_strategy" value="2" class="matrix-radio-input"><label for="d_gtm_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_gtm_3" name="rating_gtm_strategy" value="3" class="matrix-radio-input"><label for="d_gtm_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_gtm_4" name="rating_gtm_strategy" value="4" class="matrix-radio-input"><label for="d_gtm_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_gtm_5" name="rating_gtm_strategy" value="5" class="matrix-radio-input"><label for="d_gtm_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+
+                            <!-- 5. Pitch Deck Refinement -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">05</span>
+                                    Pitch Deck Refinement &amp; Investment Banking Sessions
+                                </td>
+                                <td><input type="radio" id="d_pd_1" name="rating_pitch_deck" value="1" class="matrix-radio-input"><label for="d_pd_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pd_2" name="rating_pitch_deck" value="2" class="matrix-radio-input"><label for="d_pd_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pd_3" name="rating_pitch_deck" value="3" class="matrix-radio-input"><label for="d_pd_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pd_4" name="rating_pitch_deck" value="4" class="matrix-radio-input"><label for="d_pd_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_pd_5" name="rating_pitch_deck" value="5" class="matrix-radio-input"><label for="d_pd_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+
+                            <!-- 6. Investor Readiness & Pitching Day -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">06</span>
+                                    Investor Readiness &amp; Pitching Day Preparation
+                                </td>
+                                <td><input type="radio" id="d_ir_1" name="rating_investor_readiness" value="1" class="matrix-radio-input"><label for="d_ir_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ir_2" name="rating_investor_readiness" value="2" class="matrix-radio-input"><label for="d_ir_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ir_3" name="rating_investor_readiness" value="3" class="matrix-radio-input"><label for="d_ir_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ir_4" name="rating_investor_readiness" value="4" class="matrix-radio-input"><label for="d_ir_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ir_5" name="rating_investor_readiness" value="5" class="matrix-radio-input"><label for="d_ir_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+
+                            <!-- 7. Overall Program Structure -->
+                            <tr>
+                                <td class="col-area">
+                                    <span class="matrix-order-badge">07</span>
+                                    Overall Program Structure, Scheduling &amp; Execution
+                                </td>
+                                <td><input type="radio" id="d_ops_1" name="rating_program_structure" value="1" class="matrix-radio-input"><label for="d_ops_1" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ops_2" name="rating_program_structure" value="2" class="matrix-radio-input"><label for="d_ops_2" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ops_3" name="rating_program_structure" value="3" class="matrix-radio-input"><label for="d_ops_3" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ops_4" name="rating_program_structure" value="4" class="matrix-radio-input"><label for="d_ops_4" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                                <td><input type="radio" id="d_ops_5" name="rating_program_structure" value="5" class="matrix-radio-input"><label for="d_ops_5" class="matrix-radio-label"><span class="matrix-radio-inner"></span></label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile Card-Based Matrix View -->
+                <div class="matrix-mobile-cards">
+                    <!-- 1. Legal -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">01</span> Legal, IP Advisory &amp; Regulatory Compliance</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_lip_1" name="m_rating_legal_ip" value="1" class="matrix-mobile-input"><label for="m_lip_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_lip_2" name="m_rating_legal_ip" value="2" class="matrix-mobile-input"><label for="m_lip_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_lip_3" name="m_rating_legal_ip" value="3" class="matrix-mobile-input"><label for="m_lip_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_lip_4" name="m_rating_legal_ip" value="4" class="matrix-mobile-input"><label for="m_lip_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_lip_5" name="m_rating_legal_ip" value="5" class="matrix-mobile-input"><label for="m_lip_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Product Validation -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">02</span> Product Validation, Tech Transfer &amp; Scale-Up</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_pv_1" name="m_rating_product_validation" value="1" class="matrix-mobile-input"><label for="m_pv_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_pv_2" name="m_rating_product_validation" value="2" class="matrix-mobile-input"><label for="m_pv_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_pv_3" name="m_rating_product_validation" value="3" class="matrix-mobile-input"><label for="m_pv_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_pv_4" name="m_rating_product_validation" value="4" class="matrix-mobile-input"><label for="m_pv_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_pv_5" name="m_rating_product_validation" value="5" class="matrix-mobile-input"><label for="m_pv_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. PMF -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">03</span> Product-Market Fit &amp; Deep-Tech Strategy</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_pmf_1" name="m_rating_product_market_fit" value="1" class="matrix-mobile-input"><label for="m_pmf_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_pmf_2" name="m_rating_product_market_fit" value="2" class="matrix-mobile-input"><label for="m_pmf_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_pmf_3" name="m_rating_product_market_fit" value="3" class="matrix-mobile-input"><label for="m_pmf_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_pmf_4" name="m_rating_product_market_fit" value="4" class="matrix-mobile-input"><label for="m_pmf_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_pmf_5" name="m_rating_product_market_fit" value="5" class="matrix-mobile-input"><label for="m_pmf_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. GTM Strategy -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">04</span> Go-to-Market Strategy &amp; Execution</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_gtm_1" name="m_rating_gtm_strategy" value="1" class="matrix-mobile-input"><label for="m_gtm_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_gtm_2" name="m_rating_gtm_strategy" value="2" class="matrix-mobile-input"><label for="m_gtm_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_gtm_3" name="m_rating_gtm_strategy" value="3" class="matrix-mobile-input"><label for="m_gtm_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_gtm_4" name="m_rating_gtm_strategy" value="4" class="matrix-mobile-input"><label for="m_gtm_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_gtm_5" name="m_rating_gtm_strategy" value="5" class="matrix-mobile-input"><label for="m_gtm_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Pitch Deck Refinement -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">05</span> Pitch Deck Refinement &amp; IB Sessions</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_pd_1" name="m_rating_pitch_deck" value="1" class="matrix-mobile-input"><label for="m_pd_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_pd_2" name="m_rating_pitch_deck" value="2" class="matrix-mobile-input"><label for="m_pd_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_pd_3" name="m_rating_pitch_deck" value="3" class="matrix-mobile-input"><label for="m_pd_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_pd_4" name="m_rating_pitch_deck" value="4" class="matrix-mobile-input"><label for="m_pd_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_pd_5" name="m_rating_pitch_deck" value="5" class="matrix-mobile-input"><label for="m_pd_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Investor Readiness -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">06</span> Investor Readiness &amp; Pitching Day Prep</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_ir_1" name="m_rating_investor_readiness" value="1" class="matrix-mobile-input"><label for="m_ir_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_ir_2" name="m_rating_investor_readiness" value="2" class="matrix-mobile-input"><label for="m_ir_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_ir_3" name="m_rating_investor_readiness" value="3" class="matrix-mobile-input"><label for="m_ir_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_ir_4" name="m_rating_investor_readiness" value="4" class="matrix-mobile-input"><label for="m_ir_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_ir_5" name="m_rating_investor_readiness" value="5" class="matrix-mobile-input"><label for="m_ir_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Structure -->
+                    <div class="matrix-mobile-card">
+                        <div class="matrix-mobile-card-title"><span class="matrix-order-badge">07</span> Overall Program Structure &amp; Execution</div>
+                        <div class="matrix-mobile-options">
+                            <div><input type="radio" id="m_ops_1" name="m_rating_program_structure" value="1" class="matrix-mobile-input"><label for="m_ops_1" class="matrix-mobile-pill-label">1</label></div>
+                            <div><input type="radio" id="m_ops_2" name="m_rating_program_structure" value="2" class="matrix-mobile-input"><label for="m_ops_2" class="matrix-mobile-pill-label">2</label></div>
+                            <div><input type="radio" id="m_ops_3" name="m_rating_program_structure" value="3" class="matrix-mobile-input"><label for="m_ops_3" class="matrix-mobile-pill-label">3</label></div>
+                            <div><input type="radio" id="m_ops_4" name="m_rating_program_structure" value="4" class="matrix-mobile-input"><label for="m_ops_4" class="matrix-mobile-pill-label">4</label></div>
+                            <div><input type="radio" id="m_ops_5" name="m_rating_program_structure" value="5" class="matrix-mobile-input"><label for="m_ops_5" class="matrix-mobile-pill-label">5</label></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SECTION 3: OPERATIONAL & STRATEGIC IMPACT -->
+            <!-- ========================================================= -->
+            <section class="form-section-card" id="section3Card">
+                <div class="section-card-header">
+                    <div class="section-number-pill">3</div>
+                    <div class="section-card-title-group">
+                        <h2 class="section-card-title">Operational & Strategic Impact</h2>
+                        <p class="section-card-desc">Highlight the tangible breakthroughs and curriculum areas of highest impact during your 4-week acceleration sprint.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone Selection Grid -->
+                <div class="form-group">
+                    <label class="form-label">Which key milestone did EPOCH help your startup achieve the most progress on? <span class="label-required">*</span></label>
+                    <div class="milestone-options-grid">
+                        <input type="radio" id="ms_legal" name="milestone_progress" value="Legal, IP & Regulatory Strategy" class="milestone-input">
+                        <label for="ms_legal" class="milestone-card-label">
+                            <span class="milestone-custom-indicator"><span class="milestone-indicator-dot"></span></span>
+                            <span class="milestone-card-text">Legal, IP &amp; Regulatory Strategy</span>
+                        </label>
+
+                        <input type="radio" id="ms_tech" name="milestone_progress" value="Product / Tech Validation" class="milestone-input">
+                        <label for="ms_tech" class="milestone-card-label">
+                            <span class="milestone-custom-indicator"><span class="milestone-indicator-dot"></span></span>
+                            <span class="milestone-card-text">Product / Tech Validation</span>
+                        </label>
+
+                        <input type="radio" id="ms_pmf" name="milestone_progress" value="Product-Market Fit" class="milestone-input">
+                        <label for="ms_pmf" class="milestone-card-label">
+                            <span class="milestone-custom-indicator"><span class="milestone-indicator-dot"></span></span>
+                            <span class="milestone-card-text">Product-Market Fit</span>
+                        </label>
+
+                        <input type="radio" id="ms_gtm" name="milestone_progress" value="Go-to-Market Strategy" class="milestone-input">
+                        <label for="ms_gtm" class="milestone-card-label">
+                            <span class="milestone-custom-indicator"><span class="milestone-indicator-dot"></span></span>
+                            <span class="milestone-card-text">Go-to-Market Strategy</span>
+                        </label>
+
+                        <input type="radio" id="ms_ir" name="milestone_progress" value="Investor Readiness / Valuation" class="milestone-input">
+                        <label for="ms_ir" class="milestone-card-label">
+                            <span class="milestone-custom-indicator"><span class="milestone-indicator-dot"></span></span>
+                            <span class="milestone-card-text">Investor Readiness / Valuation</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Single Most Valuable Session -->
+                <div class="form-group" style="margin-top: 28px;">
+                    <label class="form-label" for="valuable_session">What was the single most valuable masterclass, mentor interaction, or session during the 4 weeks? <span class="label-required">*</span></label>
+                    <textarea id="valuable_session" name="valuable_session" class="form-textarea" rows="3" placeholder="Describe the session, mentor insight, or breakthrough that generated the highest compounding value for your company..." maxlength="1500" data-counter-id="valuableCounter"></textarea>
+                    <div class="char-counter" id="valuableCounter">0 / 1500 characters</div>
+                </div>
+
+                <!-- Specific Topic Needing More Depth -->
+                <div class="form-group" style="margin-top: 18px;">
+                    <label class="form-label" for="needed_depth_topics">What specific area or topic needed more depth or actionable support? <span class="label-hint">(Optional)</span></label>
+                    <textarea id="needed_depth_topics" name="needed_depth_topics" class="form-textarea" rows="3" placeholder="Tell us where you needed deeper technical resources, office hours, or specific investor/domain introductions..." maxlength="1500" data-counter-id="depthCounter"></textarea>
+                    <div class="char-counter" id="depthCounter">0 / 1500 characters</div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SECTION 4: NET PROMOTER SCORE & ADVOCACY -->
+            <!-- ========================================================= -->
+            <section class="form-section-card" id="section4Card">
+                <div class="section-card-header">
+                    <div class="section-number-pill">4</div>
+                    <div class="section-card-title-group">
+                        <h2 class="section-card-title">Net Promoter Score &amp; Recommendation</h2>
+                        <p class="section-card-desc">Help us gauge your overall satisfaction and willingness to recommend EPOCH to other deep-tech founders.</p>
+                    </div>
+                </div>
+
+                <div class="nps-container">
+                    <label class="form-label">How likely are you to recommend the EPOCH Accelerator to fellow deep-tech founders? <span class="label-required">*</span></label>
+
+                    <div class="nps-scale-bar" role="radiogroup" aria-label="NPS Scale 1 to 10">
+                        <div><input type="radio" id="nps_1" name="nps_score" value="1" class="nps-input"><label for="nps_1" class="nps-pill-label">1</label></div>
+                        <div><input type="radio" id="nps_2" name="nps_score" value="2" class="nps-input"><label for="nps_2" class="nps-pill-label">2</label></div>
+                        <div><input type="radio" id="nps_3" name="nps_score" value="3" class="nps-input"><label for="nps_3" class="nps-pill-label">3</label></div>
+                        <div><input type="radio" id="nps_4" name="nps_score" value="4" class="nps-input"><label for="nps_4" class="nps-pill-label">4</label></div>
+                        <div><input type="radio" id="nps_5" name="nps_score" value="5" class="nps-input"><label for="nps_5" class="nps-pill-label">5</label></div>
+                        <div><input type="radio" id="nps_6" name="nps_score" value="6" class="nps-input"><label for="nps_6" class="nps-pill-label">6</label></div>
+                        <div><input type="radio" id="nps_7" name="nps_score" value="7" class="nps-input"><label for="nps_7" class="nps-pill-label">7</label></div>
+                        <div><input type="radio" id="nps_8" name="nps_score" value="8" class="nps-input"><label for="nps_8" class="nps-pill-label">8</label></div>
+                        <div><input type="radio" id="nps_9" name="nps_score" value="9" class="nps-input"><label for="nps_9" class="nps-pill-label">9</label></div>
+                        <div><input type="radio" id="nps_10" name="nps_score" value="10" class="nps-input"><label for="nps_10" class="nps-pill-label">10</label></div>
+                    </div>
+
+                    <div class="nps-scale-legend">
+                        <span>1 = Unlikely</span>
+                        <span>10 = Extremely Likely</span>
+                    </div>
+
+                    <div class="nps-feedback-badge" id="npsFeedbackBadge"></div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SECTION 5: FOUNDER TESTIMONIAL & PUBLIC QUOTE -->
+            <!-- ========================================================= -->
+            <section class="form-section-card" id="section5Card">
+                <div class="section-card-header">
+                    <div class="section-number-pill">5</div>
+                    <div class="section-card-title-group">
+                        <h2 class="section-card-title">Founder Testimonial &amp; Public Quote</h2>
+                        <p class="section-card-desc">Share your journey and the quantifiable acceleration achieved during EPOCH Cohort 2.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="testimonial">Share your experience with EPOCH Cohort 2 in a few sentences. How did EPOCH impact your founder journey and commercial trajectory? <span class="label-required">*</span></label>
+                    <textarea id="testimonial" name="testimonial" class="form-textarea" rows="4" placeholder="EPOCH provided the uncompromising execution rhythm and investor frameworks we needed to transition from lab-stage validation to a commercial deep-tech enterprise..." maxlength="2000" data-counter-id="testimonialCounter"></textarea>
+                    <div class="char-counter" id="testimonialCounter">0 / 2000 characters</div>
+                </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                    <label class="form-label" for="highlight_quote">Key Highlight / One-Liner Quote <span class="label-required">*</span></label>
+                    <input type="text" id="highlight_quote" name="highlight_quote" class="form-input" placeholder='e.g., "EPOCH bridged our gap from lab validation to investor readiness in 4 weeks"'>
+                </div>
+
+                <!-- Consent & Media Release Box -->
+                <div class="consent-box-wrapper">
+                    <input type="checkbox" id="consent_media_release" name="consent_media_release" class="consent-checkbox-input" checked>
+                    <label for="consent_media_release" class="consent-label">
+                        <span class="consent-custom-checkbox">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <div>
+                            <div class="consent-text-heading">Consent &amp; Media Release Authorization</div>
+                            <p class="consent-text-body">
+                                I authorize EPOCH Accelerator to publish my testimonial, startup name, and logo in official marketing materials, investor reports, and website media.
+                            </p>
+                        </div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Submission Actions -->
+            <div class="form-submit-wrapper">
+                <button type="submit" class="btn-submit-feedback" id="btnSubmitFeedback">
+                    <span class="submit-spinner" id="submitSpinner"></span>
+                    <span id="submitBtnText">Submit Assessment &amp; Feedback</span>
+                </button>
+                <p class="submit-hint">Responses are encrypted and synced directly to the EPOCH Sovereign Cloud Database.</p>
+            </div>
+        </form>
+
+        <!-- ========================================================= -->
+        <!-- SUCCESS CONFIRMATION RECEIPT SCREEN -->
+        <!-- ========================================================= -->
+        <div class="feedback-success-card" id="feedbackSuccessCard" role="region" aria-live="polite">
+            <div class="success-icon-badge">✓</div>
+            <h2 class="success-title">Feedback Successfully Recorded</h2>
+            <p class="success-desc">
+                Thank you for submitting your Cohort 2 Exit Assessment. Your feedback has been securely synced to the EPOCH program database.
+            </p>
+
+            <div class="success-receipt-box">
+                <div class="receipt-row">
+                    <span class="receipt-label">Founder Name</span>
+                    <span class="receipt-value" id="receiptFounderName">—</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Startup Name</span>
+                    <span class="receipt-value" id="receiptStartupName">—</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Registered Email</span>
+                    <span class="receipt-value" id="receiptEmail">—</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">NPS Score</span>
+                    <span class="receipt-value gold" id="receiptNps">—</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Submission Reference ID</span>
+                    <span class="receipt-value" id="receiptId" style="font-family: monospace; font-size: 0.85rem;">—</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Recorded At</span>
+                    <span class="receipt-value" id="receiptDate">—</span>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <a href="/" class="btn-secondary-link">← Return to EPOCH Main Site</a>
+                <a href="https://epoch.aigrants.in" class="btn-secondary-link" target="_blank" rel="noopener noreferrer">Visit AIGrants Platform ↗</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 60px 20px 40px; color: var(--text-dim); font-size: 0.82rem; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 60px;">
+        <p>© 2026 EPOCH Accelerator · AIGrants Indian Foundation · Pune, Maharashtra</p>
+        <p style="margin-top: 6px; font-size: 0.78rem;">Sovereign Deep-Tech &amp; AI Incubation Infrastructure</p>
+    </footer>
+
+    <!-- App Engine Script -->
+    <script src="feedback.js"></script>
+</body>
+</html>
